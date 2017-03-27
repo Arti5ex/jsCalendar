@@ -1,13 +1,6 @@
 "use strict";
 
-(function (global, factory) {
-    if (typeof exports === "object" && typeof module !== "undefined")
-        module.exports = factory();
-    if (typeof define === "function" && define.amd)
-        define(factory);
-    global.AReactDatepicker = factory();
-}(this || window, function () {
-  var React = typeof require === "function" ? require("react") : window.React;
+(function () {
 
   class Calendar{    
     constructor(props){
@@ -457,4 +450,4 @@
 
   return Calendar;
     
-}));
+});
