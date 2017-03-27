@@ -1,0 +1,178 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+  font-size: 14px;
+}
+.header{
+  height: 101px;
+  background-color: #eee;  
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2)
+}
+
+/*------ Form  -----*/
+
+.popup{
+  padding: 20px;
+  border: 1px solid #d1cac4;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background: #fff;
+}
+#addeventform{
+  width: 200px;
+}
+.popup.active{
+  display: block;
+}
+.button{
+  background-color: #0371ca;
+  border-radius: 2px;
+  padding: 5px 12px;
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3)
+}
+.button.blue{
+  margin: 0px 10px 0px 0px;
+}
+.close-button{
+  text-align: right;
+  font-size: 11px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  cursor: pointer;
+}
+.input{
+  padding: 4px 10px;  
+  width: 100%;
+  margin: 0 0 10px 0;
+  box-sizing: border-box;
+}
+textarea{
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px 0px 10px;
+  height: 100px;
+  padding: 4px 10px;
+  font-family: Arial;
+  font-size: 13px;
+}
+.search{
+  float: right;
+  width: 200px;
+}
+#config-data{
+  font-size: 13px;
+}
+#config-data .date{
+  margin-bottom: 10px;
+}
+#config-data .subtitle-bold{
+  color: #967a6d;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/*------ END Form  -----*/
+
+.container{
+  max-width: 1045px;
+  margin: 0 auto;
+}
+#calendar > .container{
+  padding: 0 20px;
+}
+
+
+.header > .container{
+  padding: 56px 20px 0px;
+}
+
+/*------ Grid  -----*/
+
+.month{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 0 0 0;
+}
+.day{
+  /*flex: 1;*/
+  border: 1px solid #ddd;
+  width: 128px;
+  height: 118px;
+  margin: 0 -1px -1px 0;
+  font-size: 13px;
+  padding: 10px;
+  color: #495b71;
+}
+.day.current{
+  background: #eee;
+}
+.day.current > .date{
+  font-weight: 600;
+}
+.day.active{
+  background: #bcd5fb;
+  border: 2px solid #5eaff3;
+  width: 126px;
+  padding: 9px 11px 11px 9px;
+  z-index: 9;
+  height: 116px;
+}
+.day.has-event{
+  background: #bcd5fb;
+}
+.day > .date{
+  /*padding: 10px 10px;*/
+  margin-bottom: 10px; 
+  color: #878787;
+}
+.day > .day-event{
+  font-weight: 600;
+  margin-bottom: 5px; 
+}
+
+
+/*------ END Grid  -----*/
+
+
+.arrow{
+  display: inline-block;
+  padding: 0px 4px;
+  border: 1px solid #e2e2e2;
+  border-radius: 2px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3) inset;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.arrow:hover{
+  box-shadow: none;
+}
+.month-name{
+  font-size: 17px;
+  width: 125px;
+  display: inline-block;
+  text-align: center;
+}
+.today-button{
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  color: #494949;
+  padding: 0px 5px;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 0 0 0 10px;
+  display: inline-block;
+}
+.month-change-container{
+  margin: 20px 0 10px 0;
+}
