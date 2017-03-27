@@ -4,28 +4,28 @@
 
   class Calendar{    
     constructor(props){
-      let self = this;
       let currentDateTimeForm = undefined;
-
       let formData = window.localStorage.getItem("form"); 
-      
       let date = new Date();
       this.date = date;
       this.currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
       let dateStart = this.getDateStart(date);
       let dateEnd = this.getDateEnd(date);
-      
       let calendarDays = this.calendarDays(dateStart, dateEnd);
+
       this.buildMonth(calendarDays);
       this.setMonthName(date);
       this.addEventsOnDays();
     }
 
-    get self(){
-      return this;
+    get months(){
+      return ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
     }
 
+    get days(){
+      return ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+    }
+    
     toMonthString(date) {
       let months = this.months;
 
@@ -42,12 +42,8 @@
       return (number.length == 1 ? '0' + number : number);
     }
 
-    get months(){
-      return ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-    }
-
     toDayString(day) {
-      let days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+      let days = this.days;
 
       return days[day];
     }
@@ -80,12 +76,14 @@
       let dateStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
       dateStart.setDate(1);
       dateStart.setDate(1 - dateStart.getDay());
+
       return dateStart;
     }
 
     getDateEnd(date){
       let dateEnd = new Date(date.getFullYear(), date.getMonth() + 1, 0);
       dateEnd.setDate(dateEnd.getDate() + 7 - dateEnd.getDay());
+
       return dateEnd;
     }
 
@@ -96,6 +94,7 @@
       let calendarDays = this.calendarDays(dateStart, dateEnd);
       this.buildMonth(calendarDays);
       this.addEventsOnDays();
+
       return true;
     }
 
@@ -228,9 +227,15 @@
       }
 
       formResult.dateTime = this.currentDateTimeForm;
-      this.saveEventLocal(formResult);
+
+      if(!formResult.event)
+        alert('Заполните поле событие.');
+      else
+        this.saveEventLocal(formResult);
 
       this.closeEventForm();
+
+      return true;
     }
 
     deleteEvent(e){
@@ -389,7 +394,7 @@
       let addShortEventForm = document.getElementById('add-short-event-form');
       let openShortEventButton = document.getElementById('open-short-event-button');
 
-      addShortEventForm.style.top = openShortEventButton.offsetTop + 28 + "px";  
+      addShortEventForm.style.top = openShortEventButton.offsetTop + 39 + "px";  
       addShortEventForm.style.left = openShortEventButton.offsetLeft - 8 + "px";
       addShortEventForm.classList.add('active');
 

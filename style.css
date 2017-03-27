@@ -9,6 +9,16 @@ body{
   background-color: #eee;  
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2)
 }
+.container{
+  max-width: 1045px;
+  margin: 0 auto;
+}
+#calendar > .container{
+  padding: 0 20px;
+}
+.header > .container{
+  padding: 56px 20px 0px;
+}
 
 /*------ Form  -----*/
 
@@ -81,20 +91,46 @@ textarea{
   font-size: 12px;
 }
 
+.left-arrow-white{
+ width: 12px;
+  height: 30px;
+  position: absolute;
+  top: 16px;
+  left: -12px;
+  overflow: hidden;
+}
+.left-arrow-white-inner{
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background: #fff;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  top: 7px;
+  position: absolute;
+  left: 4px;
+}
+
+.top-arrow-white{
+  width: 30px;
+  height: 12px;
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  overflow: hidden;
+}
+.top-arrow-white-inner{
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background: #fff;
+  box-shadow: -1px -1px 3px rgba(0, 0, 0, 0.3);
+  top: 7px;
+  position: absolute;
+  left: 4px;
+}
+
 /*------ END Form  -----*/
 
-.container{
-  max-width: 1045px;
-  margin: 0 auto;
-}
-#calendar > .container{
-  padding: 0 20px;
-}
-
-
-.header > .container{
-  padding: 56px 20px 0px;
-}
 
 /*------ Grid  -----*/
 
