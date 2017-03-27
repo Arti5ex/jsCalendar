@@ -7,9 +7,7 @@
       let self = this;
       let currentDateTimeForm = undefined;
 
-      // window.localStorage.setItem("form", '{}'); 
       let formData = window.localStorage.getItem("form"); 
-      console.log(formData);
       
       let date = new Date();
       this.date = date;
@@ -86,7 +84,7 @@
     }
 
     getDateEnd(date){
-      let dateEnd = new Date(date.getFullYear(), date.getMonth() + 1, 0);//new Date(date.getTime());
+      let dateEnd = new Date(date.getFullYear(), date.getMonth() + 1, 0);
       dateEnd.setDate(dateEnd.getDate() + 7 - dateEnd.getDay());
       return dateEnd;
     }
@@ -296,8 +294,6 @@
         this.alertTooMuchEvent();
       else
         data[event.dateTime].push(newItem);
-
-      console.log(data);  
       
       window.localStorage.setItem("form", JSON.stringify(data));
 
