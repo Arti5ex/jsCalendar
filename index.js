@@ -4,18 +4,16 @@
 
   class Calendar{    
     constructor(props){
-      let currentDateTimeForm = undefined;
-      let formData = window.localStorage.getItem("form"); 
       let date = new Date();
       this.date = date;
       this.currentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      this.currentDateTimeForm = undefined;
+
       let dateStart = this.getDateStart(date);
       let dateEnd = this.getDateEnd(date);
       let calendarDays = this.calendarDays(dateStart, dateEnd);
 
-      this.buildMonth(calendarDays);
-      this.setMonthName(date);
-      this.addEventsOnDays();
+      this.nextMonth();
     }
 
     get months(){
@@ -234,6 +232,7 @@
         this.saveEventLocal(formResult);
 
       this.closeEventForm();
+      this.nextMonth();
 
       return true;
     }
@@ -246,7 +245,8 @@
       }
 
       this.closeConfigEventForm();
-
+      this.nextMonth();
+      
       return true;
     }
 
@@ -258,20 +258,21 @@
       if(item){
         item.description = description;
         this.editEventLocal(item);
+        this.nextMonth();
       }
 
       return true;
     }
 
     saveShortEvent(e){
-        e.preventDefault();
-        let form = document.forms.addshortevent.elements[0].value;
-        form = form.split(',');
-        let event = form[2];
-        let dateArray = form[0].split(' ');
-        let monthNumber = this.toMonthNumber(dateArray[1]);
-        let date = new Date(this.date.getFullYear(), monthNumber.toString(), this.formatMonthDay(dateArray[0]));
-        let formResult = {};
+      e.preventDefault();
+      let form = document.forms.addshortevent.elements[0].value;
+      form = form.split(',');
+      let event = form[2];
+      let dateArray = form[0].split(' ');
+      let monthNumber = this.toMonthNumber(dateArray[1]);
+      let date = new Date(this.date.getFullYear(), monthNumber.toString(), this.formatMonthDay(dateArray[0]));
+      let formResult = {};
       
       if(isNaN(date.getTime()) || !event){
         alert('Неправильно заполнены данные.');
@@ -285,6 +286,7 @@
 
       this.saveEventLocal(formResult);
       this.hideShortEventForm();
+      this.nextMonth();
       
       return true;
     }
@@ -328,6 +330,11 @@
 
     getEventLocal(dateTime){
       let data = JSON.parse(window.localStorage.getItem("form"));
+      
+      if (!data) { 
+        window.localStorage.setItem("form", JSON.stringify({})); 
+        data = {}; 
+      }
 
       if(data[dateTime] !== undefined && data[dateTime].length > 0){
         return JSON.parse(data[dateTime][0]);
